@@ -39,5 +39,5 @@ nmap <silent> <A-Right> :wincmd l<CR>
 "Tagbar 
 nnoremap <silent> <F6> :TagbarToggle<CR>
 let g:tagbar_left=1
-:colorscheme molokai
+:colorscheme kolor
 let g:syntastic_check_on_open = 1
