@@ -1,48 +1,9 @@
-[submodule "bundle/auto-pairs"]
-	path = bundle/auto-pairs
-	url = git://github.com/jiangmiao/auto-pairs.git
-[submodule "bundle/bufexplorer"]
-	path = bundle/bufexplorer
-	url = https://github.com/jlanzarotta/bufexplorer.git
-[submodule "bundle/nerdtree"]
-	path = bundle/nerdtree
-	url = https://github.com/scrooloose/nerdtree.git
 [submodule "tabular"]
 	path = tabular
 	url = https://github.com/godlygeek/tabular.git
-[submodule "bundle/tabular"]
-	path = bundle/tabular
-	url = https://github.com/godlygeek/tabular.git
-[submodule "bundle/tagbar"]
-	path = bundle/tagbar
-	url = git://github.com/majutsushi/tagbar
-[submodule "bundle/tlib_vim"]
-	path = bundle/tlib_vim
-	url = https://github.com/tomtom/tlib_vim.git
-[submodule "bundle/vim-addon-mw-utils"]
-	path = bundle/vim-addon-mw-utils
-	url = https://github.com/MarcWeber/vim-addon-mw-utils.git
-[submodule "bundle/vim-jade"]
-	path = bundle/vim-jade
-	url = git://github.com/digitaltoad/vim-jade.git
-[submodule "bundle/vim-kolor"]
-	path = bundle/vim-kolor
-	url = https://github.com/zeis/vim-kolor.git
-[submodule "bundle/vim-snippets"]
-	path = bundle/vim-snippets
-	url = https://github.com/honza/vim-snippets.git
-[submodule "bundle/vim-surround"]
-	path = bundle/vim-surround
-	url = git://github.com/tpope/vim-surround.git
-[submodule "bundle/tcomment_vim"]
-	path = bundle/tcomment_vim
-	url = https://github.com/tomtom/tcomment_vim.git
-[submodule "bundle/vim-coffee-script"]
-	path = bundle/vim-coffee-script
-	url = https://github.com/kchmck/vim-coffee-script.git
-[submodule "bundle/vim-node"]
-	path = bundle/vim-node
-	url = https://github.com/moll/vim-node.git
 [submodule "bundle/snipmate.vim"]
 	path = bundle/snipmate.vim
 	url = https://github.com/caike/snipmate.vim.git
+[submodule "bundle/ultisnips"]
+	path = bundle/ultisnips
+	url = git://github.com/SirVer/ultisnips.git
