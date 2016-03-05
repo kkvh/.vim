@@ -20,6 +20,7 @@ Plugin 'zeis/vim-kolor'
 Plugin 'moll/vim-node'
 Plugin 'honza/vim-snippets'
 Plugin 'tpope/vim-surround'
+Plugin 'Valloric/YouCompleteMe'
 
 call vundle#end()
 
