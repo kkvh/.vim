@@ -21,6 +21,7 @@ Plugin 'moll/vim-node'
 Plugin 'honza/vim-snippets'
 Plugin 'tpope/vim-surround'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'ervandew/supertab'
 
 call vundle#end()
 
@@ -67,3 +68,13 @@ nmap <silent> <A-Right> :wincmd l<CR>
 nnoremap <silent> <F6> :TagbarToggle<CR>
 let g:tagbar_left=1
 :colorscheme kolor
+
+" make YCM compatible with UltiSnips (using supertab)
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
+
+" better key bindings for UltiSnipsExpandTrigger
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
