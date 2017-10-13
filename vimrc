@@ -1,30 +1,28 @@
 set nocompatible
 filetype off
-set	runtimepath+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
 
-Plugin 'VundleVim/Vundle.vim'
+call plug#begin('~/.vim/bundle')
 
-Plugin 'jiangmiao/auto-pairs'
-Plugin 'jlanzarotta/bufexplorer'
-Plugin 'scrooloose/nerdtree'
-Plugin 'godlygeek/tabular'
-Plugin 'majutsushi/tagbar'
-Plugin 'tomtom/tcomment_vim'
-Plugin 'tomtom/tlib_vim'
-Plugin 'SirVer/ultisnips'
-Plugin 'MarcWeber/vim-addon-mw-utils'
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'digitaltoad/vim-jade'
-Plugin 'zeis/vim-kolor'
-Plugin 'moll/vim-node'
-Plugin 'honza/vim-snippets'
-Plugin 'tpope/vim-surround'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'ervandew/supertab'
-Plugin 'easymotion/vim-easymotion'
+Plug 'jiangmiao/auto-pairs'
+Plug 'jlanzarotta/bufexplorer'
+Plug 'scrooloose/nerdtree'
+Plug 'godlygeek/tabular'
+Plug 'majutsushi/tagbar'
+Plug 'tomtom/tcomment_vim'
+Plug 'tomtom/tlib_vim'
+Plug 'SirVer/ultisnips'
+Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'zeis/vim-kolor'
+Plug 'honza/vim-snippets'
+Plug 'tpope/vim-surround'
+Plug 'ervandew/supertab'
+Plug 'easymotion/vim-easymotion'
+Plug 'fatih/vim-go'
+Plug 'Valloric/YouCompleteMe'
+Plug 'digitaltoad/vim-pug'
+Plug 'posva/vim-vue'
 
-call vundle#end()
+call plug#end()
 
 syntax on
 filetype plugin indent on
@@ -57,14 +55,18 @@ let g:NERDTreeWinPos = "right"
 "Snipmate 
 :filetype plugin on
 "BufExplorer
-nnoremap <silent> <A-F12> :BufExplorer<CR>
-nnoremap <silent> <F12> :bn<CR>
-nnoremap <silent> <S-F12> :bp<CR>
+nnoremap <silent> <F12> :BufExplorer<CR>
+" nnoremap <silent> <F12> :bn<CR>
+" nnoremap <silent> <S-F12> :bp<CR>
 "Split
-nmap <silent> <A-Up> :wincmd k<CR>
-nmap <silent> <A-Down> :wincmd j<CR>
-nmap <silent> <A-Left> :wincmd h<CR>
-nmap <silent> <A-Right> :wincmd l<CR>
+nmap <silent> ˚ :wincmd k<CR>
+nmap <silent> ∆ :wincmd j<CR>
+nmap <silent> ˙ :wincmd h<CR>
+nmap <silent> ¬ :wincmd l<CR>
+" nmap <silent> <A-Up> :wincmd k<CR>
+" nmap <silent> <A-Down> :wincmd j<CR>
+" nmap <silent> <A-Left> :wincmd h<CR>
+" nmap <silent> <A-Right> :wincmd l<CR>
 "Tagbar 
 nnoremap <silent> <F6> :TagbarToggle<CR>
 let g:tagbar_left=1
@@ -81,3 +83,5 @@ let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
 let g:EasyMotion_leader_key = '<space>'
+"Clipboard
+set clipboard=unnamed
