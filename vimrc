@@ -21,6 +21,10 @@ Plug 'fatih/vim-go'
 Plug 'Valloric/YouCompleteMe'
 Plug 'digitaltoad/vim-pug'
 Plug 'posva/vim-vue'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
 
 call plug#end()
 
@@ -50,7 +54,7 @@ set undolevels=1000
 set tabstop=4 softtabstop=0 noexpandtab shiftwidth=4 
 "NERDTree 
 let NERDTreeShowHidden=1
-nnoremap <F5> :NERDTree<CR>
+nnoremap <F5> :NERDTreeToggle<CR>
 let g:NERDTreeWinPos = "right"
 "Snipmate 
 :filetype plugin on
@@ -71,6 +75,7 @@ nmap <silent> ¬ :wincmd l<CR>
 nnoremap <silent> <F6> :TagbarToggle<CR>
 let g:tagbar_left=1
 :colorscheme kolor
+" :colorscheme monokai
 
 " make YCM compatible with UltiSnips (using supertab)
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
@@ -83,5 +88,18 @@ let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
 let g:EasyMotion_leader_key = '<space>'
+
 "Clipboard
 set clipboard=unnamed
+
+"Vim-go
+nmap <F7> :GoSameIdsToggle<CR>
+
+"AirlineTheme
+let g:airline_theme='powerlineish'
+
+"GitGutter
+let g:gitgutter_map_keys = 0
+let g:gitgutter_enabled = 0
+let g:gitgutter_highlight_lines = 1
+nmap <F8> :GitGutterToggle<CR>
