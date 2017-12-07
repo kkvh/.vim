@@ -25,6 +25,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
+Plug 'nathanaelkane/vim-indent-guides'
 
 call plug#end()
 
@@ -50,6 +51,7 @@ set showcmd
 set mouse=a
 set history=1000
 set undolevels=1000
+let mapleader = ','
 "Tabsetting
 set tabstop=4 softtabstop=0 noexpandtab shiftwidth=4 
 "NERDTree 
@@ -63,10 +65,10 @@ nnoremap <silent> <F12> :BufExplorer<CR>
 " nnoremap <silent> <F12> :bn<CR>
 " nnoremap <silent> <S-F12> :bp<CR>
 "Split
-nmap <silent> ˚ :wincmd k<CR>
-nmap <silent> ∆ :wincmd j<CR>
-nmap <silent> ˙ :wincmd h<CR>
-nmap <silent> ¬ :wincmd l<CR>
+nnoremap <silent> ˚ :wincmd k<CR>
+nnoremap <silent> ∆ :wincmd j<CR>
+nnoremap <silent> ˙ :wincmd h<CR>
+nnoremap <silent> ¬ :wincmd l<CR>
 " nmap <silent> <A-Up> :wincmd k<CR>
 " nmap <silent> <A-Down> :wincmd j<CR>
 " nmap <silent> <A-Left> :wincmd h<CR>
@@ -93,7 +95,7 @@ let g:EasyMotion_leader_key = '<space>'
 set clipboard=unnamed
 
 "Vim-go
-nmap <F7> :GoSameIdsToggle<CR>
+nnoremap <F7> :GoSameIdsToggle<CR>
 
 "AirlineTheme
 let g:airline_theme='powerlineish'
@@ -102,4 +104,9 @@ let g:airline_theme='powerlineish'
 let g:gitgutter_map_keys = 0
 let g:gitgutter_enabled = 0
 let g:gitgutter_highlight_lines = 1
-nmap <F8> :GitGutterToggle<CR>
+nnoremap <F8> :GitGutterToggle<CR>
+
+"Indent Guides
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_guide_size = 1
+let g:indent_guides_start_level = 2
