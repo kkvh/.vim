@@ -8,6 +8,7 @@ Plug 'jlanzarotta/bufexplorer'
 Plug 'scrooloose/nerdtree'
 Plug 'godlygeek/tabular'
 Plug 'majutsushi/tagbar'
+Plug 'scrooloose/nerdtree'
 Plug 'tomtom/tcomment_vim'
 Plug 'tomtom/tlib_vim'
 Plug 'SirVer/ultisnips'
@@ -17,15 +18,19 @@ Plug 'honza/vim-snippets'
 Plug 'tpope/vim-surround'
 Plug 'ervandew/supertab'
 Plug 'easymotion/vim-easymotion'
-Plug 'fatih/vim-go'
-Plug 'Valloric/YouCompleteMe'
-Plug 'digitaltoad/vim-pug'
-Plug 'posva/vim-vue'
+Plug 'fatih/vim-go', { 'for': 'go' }
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --go-completer --js-completer'}
+Plug 'digitaltoad/vim-pug', { 'for': [ 'vue','pug' ] }
+Plug 'posva/vim-vue', { 'for': 'vue' }
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'nathanaelkane/vim-indent-guides'
+Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
+Plug 'jason0x43/vim-js-indent', { 'for': [ 'javascript','typescript','vue' ] }
+Plug 'Quramy/vim-js-pretty-template', { 'for': [ 'javascript','typescript' ] }
+Plug 'Quramy/tsuquyomi', { 'for': 'typescript' }
+Plug 'kevinhui/vim-docker-tools'
 
 call plug#end()
 
@@ -69,6 +74,10 @@ nnoremap <silent> ˚ :wincmd k<CR>
 nnoremap <silent> ∆ :wincmd j<CR>
 nnoremap <silent> ˙ :wincmd h<CR>
 nnoremap <silent> ¬ :wincmd l<CR>
+tnoremap <silent> ˚ <C-W>k
+tnoremap <silent> ∆ <C-W>j
+tnoremap <silent> ˙ <C-W>h
+tnoremap <silent> ¬ <C-W>l
 " nmap <silent> <A-Up> :wincmd k<CR>
 " nmap <silent> <A-Down> :wincmd j<CR>
 " nmap <silent> <A-Left> :wincmd h<CR>
@@ -100,13 +109,36 @@ nnoremap <F7> :GoSameIdsToggle<CR>
 "AirlineTheme
 let g:airline_theme='powerlineish'
 
-"GitGutter
-let g:gitgutter_map_keys = 0
-let g:gitgutter_enabled = 0
-let g:gitgutter_highlight_lines = 1
-nnoremap <F8> :GitGutterToggle<CR>
-
 "Indent Guides
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_guide_size = 1
 let g:indent_guides_start_level = 2
+
+"Vim Developement
+:au BufWritePost *.vim :silent source %
+nnoremap <F9> :ToggleVDSplit<CR>
+
+:au BufWritePost *.go :silent GoBuild
+
+"Govim
+let g:go_highlight_fields = 1
+let g:go_highlight_types = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+let g:go_highlight_generate_tags = 1
+
+"Js pretty template
+au FileType javascript JsPreTmpl html
+
+"Vue Development
+command! VueAlternate :call VueAlternate()
+
+" Get Vue test file {{{
+"============================================================
+function! VueAlternate()
+	silent execute "vsplit ".expand('%').'.spec.js'
+endfunction
+" }}}
