@@ -136,9 +136,10 @@ au FileType javascript JsPreTmpl html
 "Vue Development
 command! VueAlternate :call VueAlternate()
 
-" Get Vue test file {{{
-"============================================================
 function! VueAlternate()
-	silent execute "vsplit ".expand('%').'.spec.js'
+	if match(expand('%'),'.spec.js') == -1
+		silent execute 'vsplit '.expand('%').'.spec.js'
+	else
+		silent execute 'vsplit '.substitute(expand('%'),'.spec.js','','')
+	endif
 endfunction
-" }}}
