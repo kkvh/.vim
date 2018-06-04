@@ -31,6 +31,8 @@ Plug 'jason0x43/vim-js-indent', { 'for': [ 'javascript','typescript','vue' ] }
 Plug 'Quramy/vim-js-pretty-template', { 'for': [ 'javascript','typescript' ] }
 Plug 'Quramy/tsuquyomi', { 'for': 'typescript' }
 Plug 'kevinhui/vim-docker-tools'
+Plug 'elmcast/elm-vim', { 'for': 'elm' }
+Plug 'mrtazz/simplenote.vim'
 
 call plug#end()
 
@@ -56,6 +58,7 @@ set showcmd
 set mouse=a
 set history=1000
 set undolevels=1000
+set nowrap
 let mapleader = ','
 "Tabsetting
 set tabstop=4 softtabstop=0 noexpandtab shiftwidth=4 
@@ -70,14 +73,22 @@ nnoremap <silent> <F12> :BufExplorer<CR>
 " nnoremap <silent> <F12> :bn<CR>
 " nnoremap <silent> <S-F12> :bp<CR>
 "Split
-nnoremap <silent> ˚ :wincmd k<CR>
-nnoremap <silent> ∆ :wincmd j<CR>
-nnoremap <silent> ˙ :wincmd h<CR>
-nnoremap <silent> ¬ :wincmd l<CR>
-tnoremap <silent> ˚ <C-W>k
-tnoremap <silent> ∆ <C-W>j
-tnoremap <silent> ˙ <C-W>h
-tnoremap <silent> ¬ <C-W>l
+if has('mac')
+	nnoremap <silent> ˚ :wincmd k<CR>
+	nnoremap <silent> ∆ :wincmd j<CR>
+	nnoremap <silent> ˙ :wincmd h<CR>
+	nnoremap <silent> ¬ :wincmd l<CR>
+	nnoremap <silent>  :wincmd K<CR>
+	nnoremap <silent> Ô :wincmd J<CR>
+	nnoremap <silent> Ó :wincmd H<CR>
+	nnoremap <silent> Ò :wincmd L<CR>
+endif
+if has('terminal')
+	tnoremap <silent> ˚ <C-W>k
+	tnoremap <silent> ∆ <C-W>j
+	tnoremap <silent> ˙ <C-W>h
+	tnoremap <silent> ¬ <C-W>l
+endif
 " nmap <silent> <A-Up> :wincmd k<CR>
 " nmap <silent> <A-Down> :wincmd j<CR>
 " nmap <silent> <A-Left> :wincmd h<CR>
@@ -118,7 +129,7 @@ let g:indent_guides_start_level = 2
 :au BufWritePost *.vim :silent source %
 nnoremap <F9> :ToggleVDSplit<CR>
 
-:au BufWritePost *.go :silent GoBuild
+:au BufWritePost *.go :silent GoInstall
 
 "Govim
 let g:go_highlight_fields = 1
@@ -134,12 +145,18 @@ let g:go_highlight_generate_tags = 1
 au FileType javascript JsPreTmpl html
 
 "Vue Development
-command! VueAlternate :call VueAlternate()
+" command! VueAlternate :call VueAlternate()
+"
+" function! VueAlternate()
+" 	if match(expand('%'),'.spec.js') == -1
+" 		silent execute 'vsplit '.expand('%').'.spec.js'
+" 	else
+" 		silent execute 'vsplit '.substitute(expand('%'),'.spec.js','','')
+" 	endif
+" endfunction
 
-function! VueAlternate()
-	if match(expand('%'),'.spec.js') == -1
-		silent execute 'vsplit '.expand('%').'.spec.js'
-	else
-		silent execute 'vsplit '.substitute(expand('%'),'.spec.js','','')
-	endif
-endfunction
+"simplenote.vim
+if has('mac')
+	let g:SimplenoteUsername = 'huikikwankevin@gmail.com'
+	let g:SimplenotePassword = system(printf("echo -n `security find-generic-password -g -w -a %s -l Simplenote`",g:SimplenoteUsername))
+endif
