@@ -33,6 +33,7 @@ Plug 'Quramy/tsuquyomi', { 'for': 'typescript' }
 Plug 'kevinhui/vim-docker-tools'
 Plug 'elmcast/elm-vim', { 'for': 'elm' }
 Plug 'mrtazz/simplenote.vim'
+Plug 'tpope/vim-scriptease'
 
 call plug#end()
 
@@ -127,9 +128,7 @@ let g:indent_guides_start_level = 2
 
 "Vim Developement
 :au BufWritePost *.vim :silent source %
-nnoremap <F9> :ToggleVDSplit<CR>
-
-:au BufWritePost *.go :silent GoInstall
+nnoremap <F9> :DockerToolsToggle<CR>
 
 "Govim
 let g:go_highlight_fields = 1
@@ -140,23 +139,28 @@ let g:go_highlight_structs = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 let g:go_highlight_generate_tags = 1
+let g:go_metalinter_enabled = ['vet', 'vetshadow', 'golint', 'errcheck', 'deadcode', 'dupl', 'goconst', 'gas']
+
+:au BufWritePost *.go :silent GoBuild
 
 "Js pretty template
 au FileType javascript JsPreTmpl html
 
 "Vue Development
-" command! VueAlternate :call VueAlternate()
-"
-" function! VueAlternate()
-" 	if match(expand('%'),'.spec.js') == -1
-" 		silent execute 'vsplit '.expand('%').'.spec.js'
-" 	else
-" 		silent execute 'vsplit '.substitute(expand('%'),'.spec.js','','')
-" 	endif
-" endfunction
+command! VueAlternate :call VueAlternate()
+
+function! VueAlternate()
+	if match(expand('%'),'.spec.js') == -1
+		silent execute 'vsplit '.expand('%').'.spec.js'
+	else
+		silent execute 'vsplit '.substitute(expand('%'),'.spec.js','','')
+	endif
+endfunction
 
 "simplenote.vim
 if has('mac')
 	let g:SimplenoteUsername = 'huikikwankevin@gmail.com'
 	let g:SimplenotePassword = system(printf("echo -n `security find-generic-password -g -w -a %s -l Simplenote`",g:SimplenoteUsername))
 endif
+
+:au FileType json %!python -m json.tool
