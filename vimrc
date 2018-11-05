@@ -35,6 +35,7 @@ Plug 'elmcast/elm-vim', { 'for': 'elm' }
 Plug 'mrtazz/simplenote.vim'
 Plug 'tpope/vim-scriptease'
 Plug 'wesQ3/vim-windowswap'
+Plug 'ryanoasis/vim-devicons'
 
 call plug#end()
 
