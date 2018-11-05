@@ -121,6 +121,7 @@ nnoremap <F7> :GoSameIdsToggle<CR>
 
 "AirlineTheme
 let g:airline_theme='powerlineish'
+let g:airline_powerline_fonts = 1
 
 "Indent Guides
 let g:indent_guides_enable_on_vim_startup = 1
