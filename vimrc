@@ -41,7 +41,10 @@ call plug#end()
 
 syntax on
 filetype plugin indent on
-colorscheme kolor
+try
+	colorscheme kolor
+catch
+endtry
 "Set the status line options. Make it show more information.
 set laststatus=2
 set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\[POS=%l,%v][%p%%]\%{strftime(\"%d/%m/%y\ -\ %H:%M\")}
@@ -110,7 +113,7 @@ let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 let g:EasyMotion_leader_key = '<space>'
 
 "Clipboard
-set clipboard=unnamed
+set clipboard=unnamedplus
 
 "AirlineTheme
 let g:airline_theme='powerlineish'
