@@ -19,7 +19,7 @@ Plug 'tpope/vim-surround'
 Plug 'ervandew/supertab'
 Plug 'easymotion/vim-easymotion'
 Plug 'fatih/vim-go', { 'for': 'go' }
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --go-completer --js-completer'}
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --go-completer --js-completer'}
 Plug 'digitaltoad/vim-pug', { 'for': [ 'vue','pug' ] }
 Plug 'posva/vim-vue', { 'for': 'vue' }
 Plug 'vim-airline/vim-airline'
@@ -41,71 +41,66 @@ call plug#end()
 
 syntax on
 filetype plugin indent on
+colorscheme kolor
 "Set the status line options. Make it show more information.
 set laststatus=2
 set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\[POS=%l,%v][%p%%]\%{strftime(\"%d/%m/%y\ -\ %H:%M\")}
-"Set Color Scheme and Font Options
-set guifont=Consolas:h12
 "set line no, buffer, search, highlight, autoindent and more.
-set nu
-set hidden
-set ignorecase
-set incsearch
-set smartcase
-set showmatch
-set autoindent
-set ruler
-set vb
-set noerrorbells
-set showcmd
+set nu hidden ignorecase incsearch smartcase showmatch autoindent ruler vb noerrorbells showcmd
 set mouse=a
 set history=1000
 set undolevels=1000
 set nowrap
-let mapleader = ','
-"Tabsetting
 set tabstop=4 softtabstop=0 noexpandtab shiftwidth=4 
+let mapleader = ','
+if has('mac')
+	nnoremap <silent> ˚ <C-W>k
+	nnoremap <silent> ∆ <C-W>j
+	nnoremap <silent> ˙ <C-W>h
+	nnoremap <silent> ¬ <C-W>l
+	nnoremap <silent>  <C-W>K
+	nnoremap <silent> Ô <C-W>J
+	nnoremap <silent> Ó <C-W>H
+	nnoremap <silent> Ò <C-W>L
+	if has('terminal')
+		tnoremap <silent> ˚ <C-W>k
+		tnoremap <silent> ∆ <C-W>j
+		tnoremap <silent> ˙ <C-W>h
+		tnoremap <silent> ¬ <C-W>l
+	endif
+else
+	nnoremap <silent> <A-Up> <C-W>k
+	nnoremap <silent> <A-Down> <C-W>j
+	nnoremap <silent> <A-Left> <C-W>h
+	nnoremap <silent> <A-Right> <C-W>l
+	if has('terminal')
+		tnoremap <silent> <A-Up> <C-W>k
+		tnoremap <silent> <A-Down> <C-W>j
+		tnoremap <silent> <A-Left> <C-W>h
+		tnoremap <silent> <A-Right> <C-W>l
+	endif
+endif
+
 "NERDTree 
 let NERDTreeShowHidden=1
 nnoremap <F5> :NERDTreeToggle<CR>
 let g:NERDTreeWinPos = "right"
-"Snipmate 
-:filetype plugin on
+
 "BufExplorer
 nnoremap <silent> <F12> :BufExplorer<CR>
 " nnoremap <silent> <F12> :bn<CR>
 " nnoremap <silent> <S-F12> :bp<CR>
-"Split
-if has('mac')
-	nnoremap <silent> ˚ :wincmd k<CR>
-	nnoremap <silent> ∆ :wincmd j<CR>
-	nnoremap <silent> ˙ :wincmd h<CR>
-	nnoremap <silent> ¬ :wincmd l<CR>
-	nnoremap <silent>  :wincmd K<CR>
-	nnoremap <silent> Ô :wincmd J<CR>
-	nnoremap <silent> Ó :wincmd H<CR>
-	nnoremap <silent> Ò :wincmd L<CR>
-endif
-if has('terminal')
-	tnoremap <silent> ˚ <C-W>k
-	tnoremap <silent> ∆ <C-W>j
-	tnoremap <silent> ˙ <C-W>h
-	tnoremap <silent> ¬ <C-W>l
-endif
-" nmap <silent> <A-Up> :wincmd k<CR>
-" nmap <silent> <A-Down> :wincmd j<CR>
-" nmap <silent> <A-Left> :wincmd h<CR>
-" nmap <silent> <A-Right> :wincmd l<CR>
+
 "Tagbar 
 nnoremap <silent> <F6> :TagbarToggle<CR>
 let g:tagbar_left=1
-:colorscheme kolor
-" :colorscheme monokai
 
 " make YCM compatible with UltiSnips (using supertab)
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 let g:SuperTabDefaultCompletionType = '<C-n>'
+let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
+let g:ycm_confirm_extra_conf = 0
 
 " better key bindings for UltiSnipsExpandTrigger
 let g:UltiSnipsExpandTrigger = "<tab>"
@@ -117,9 +112,6 @@ let g:EasyMotion_leader_key = '<space>'
 "Clipboard
 set clipboard=unnamed
 
-"Vim-go
-nnoremap <F7> :GoSameIdsToggle<CR>
-
 "AirlineTheme
 let g:airline_theme='powerlineish'
 let g:airline_powerline_fonts = 1
@@ -130,7 +122,7 @@ let g:indent_guides_guide_size = 1
 let g:indent_guides_start_level = 2
 
 "Vim Developement
-:au BufWritePost *.vim :silent source %
+au BufWritePost *.vim :silent source %
 nnoremap <F9> :DockerToolsToggle<CR>
 
 "Govim
@@ -142,9 +134,10 @@ let g:go_highlight_structs = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 let g:go_highlight_generate_tags = 1
-let g:go_metalinter_enabled = ['vet', 'vetshadow', 'golint', 'errcheck', 'deadcode', 'dupl', 'goconst', 'gas']
+let g:go_metalinter_enabled = ['vet', 'vetshadow', 'golint', 'errcheck', 'deadcode', 'dupl', 'goconst', 'gosec']
 
-:au BufWritePost *.go :silent GoBuild
+au BufWritePost *.go :silent GoBuild
+au FileType go nnoremap <F7> :GoSameIdsToggle<CR>
 
 "Js pretty template
 au FileType javascript JsPreTmpl html
