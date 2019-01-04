@@ -32,7 +32,6 @@ Plug 'Quramy/vim-js-pretty-template', { 'for': [ 'javascript','typescript' ] }
 Plug 'Quramy/tsuquyomi', { 'for': 'typescript' }
 Plug 'kevinhui/vim-docker-tools'
 Plug 'elmcast/elm-vim', { 'for': 'elm' }
-Plug 'mrtazz/simplenote.vim'
 Plug 'tpope/vim-scriptease'
 Plug 'wesQ3/vim-windowswap'
 Plug 'ryanoasis/vim-devicons'
@@ -155,11 +154,5 @@ function! VueAlternate()
 		silent execute 'vsplit '.substitute(expand('%'),'.spec.js','','')
 	endif
 endfunction
-
-"simplenote.vim
-if has('mac')
-	let g:SimplenoteUsername = 'huikikwankevin@gmail.com'
-	let g:SimplenotePassword = system(printf("echo -n `security find-generic-password -g -w -a %s -l Simplenote`",g:SimplenoteUsername))
-endif
 
 " au FileType json %!python -m json.tool
