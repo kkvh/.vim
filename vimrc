@@ -27,13 +27,15 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
-Plug 'jason0x43/vim-js-indent', { 'for': [ 'javascript','typescript','vue' ] }
 Plug 'Quramy/vim-js-pretty-template', { 'for': [ 'javascript','typescript' ] }
 Plug 'Quramy/tsuquyomi', { 'for': 'typescript' }
 Plug 'kevinhui/vim-docker-tools'
 Plug 'elmcast/elm-vim', { 'for': 'elm' }
 Plug 'tpope/vim-scriptease'
 Plug 'wesQ3/vim-windowswap'
+Plug 'pangloss/vim-javascript', { 'for': ['javascript','javascript.jsx','typescript','vue' ] }
+Plug 'mxw/vim-jsx', { 'for': [ 'javascript','javascript.jsx' ] }
+Plug 'mattn/emmet-vim', { 'for': ['javascript','javascript.jsx'] }
 Plug 'ryanoasis/vim-devicons'
 
 call plug#end()
@@ -142,7 +144,7 @@ au BufWritePost *.go :silent GoBuild
 au FileType go nnoremap <F7> :GoSameIdsToggle<CR>
 
 "Js pretty template
-au FileType javascript JsPreTmpl html
+au FileType javascript JsPreTmpl
 
 "Vue Development
 command! VueAlternate :call VueAlternate()
