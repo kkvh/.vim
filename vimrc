@@ -29,7 +29,7 @@ Plug 'nathanaelkane/vim-indent-guides'
 Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
 Plug 'Quramy/vim-js-pretty-template', { 'for': [ 'javascript','typescript' ] }
 Plug 'Quramy/tsuquyomi', { 'for': 'typescript' }
-Plug 'kevinhui/vim-docker-tools'
+Plug 'kkvh/vim-docker-tools'
 Plug 'elmcast/elm-vim', { 'for': 'elm' }
 Plug 'tpope/vim-scriptease'
 Plug 'wesQ3/vim-windowswap'
