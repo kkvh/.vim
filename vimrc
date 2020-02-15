@@ -16,12 +16,7 @@ Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'zeis/vim-kolor'
 Plug 'honza/vim-snippets'
 Plug 'tpope/vim-surround'
-Plug 'ervandew/supertab'
 Plug 'easymotion/vim-easymotion'
-Plug 'fatih/vim-go', { 'for': 'go' }
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --go-completer --js-completer'}
-Plug 'digitaltoad/vim-pug', { 'for': [ 'vue','pug' ] }
-Plug 'posva/vim-vue', { 'for': 'vue' }
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
@@ -30,12 +25,13 @@ Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
 Plug 'Quramy/vim-js-pretty-template', { 'for': [ 'javascript','typescript' ] }
 Plug 'Quramy/tsuquyomi', { 'for': 'typescript' }
 Plug 'kkvh/vim-docker-tools'
-Plug 'elmcast/elm-vim', { 'for': 'elm' }
 Plug 'tpope/vim-scriptease'
 Plug 'wesQ3/vim-windowswap'
 Plug 'pangloss/vim-javascript', { 'for': ['javascript','javascript.jsx','typescript','vue' ] }
 Plug 'mxw/vim-jsx', { 'for': [ 'javascript','javascript.jsx' ] }
 Plug 'mattn/emmet-vim', { 'for': ['javascript','javascript.jsx'] }
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 Plug 'ryanoasis/vim-devicons'
 
 call plug#end()
@@ -99,13 +95,6 @@ nnoremap <silent> <F12> :BufExplorer<CR>
 nnoremap <silent> <F6> :TagbarToggle<CR>
 let g:tagbar_left=1
 
-" make YCM compatible with UltiSnips (using supertab)
-let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-let g:SuperTabDefaultCompletionType = '<C-n>'
-let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
-let g:ycm_confirm_extra_conf = 0
-
 " better key bindings for UltiSnipsExpandTrigger
 let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
@@ -115,6 +104,9 @@ let g:EasyMotion_leader_key = '<space>'
 
 "Clipboard
 set clipboard=unnamedplus
+
+"Airline
+let g:airline#extensions#coc#enabled = 1
 
 "AirlineTheme
 let g:airline_theme='powerlineish'
@@ -157,4 +149,14 @@ function! VueAlternate()
 	endif
 endfunction
 
-" au FileType json %!python -m json.tool
+command! JSONFormat %!python -m json.tool
+
+"Quick diff toggle
+nnoremap <F10> :call DiffToggle()<CR>
+function! DiffToggle()
+	if &diff
+		silent diffoff!
+	else
+		silent diffthis
+	endif
+endfunction
