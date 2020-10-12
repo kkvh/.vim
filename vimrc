@@ -16,7 +16,7 @@ Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'zeis/vim-kolor'
 Plug 'honza/vim-snippets'
 Plug 'tpope/vim-surround'
-Plug 'easymotion/vim-easymotion'
+" Plug 'easymotion/vim-easymotion'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
@@ -31,8 +31,10 @@ Plug 'pangloss/vim-javascript', { 'for': ['javascript','javascript.jsx','typescr
 Plug 'mxw/vim-jsx', { 'for': [ 'javascript','javascript.jsx' ] }
 Plug 'mattn/emmet-vim', { 'for': ['javascript','javascript.jsx'] }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'mustache/vim-mustache-handlebars'
 Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 Plug 'ryanoasis/vim-devicons'
+Plug 'tpope/vim-rhubarb'
 
 call plug#end()
 
@@ -103,7 +105,7 @@ let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 let g:EasyMotion_leader_key = '<space>'
 
 "Clipboard
-set clipboard=unnamedplus
+set clipboard=unnamed
 
 "Airline
 let g:airline#extensions#coc#enabled = 1
@@ -160,3 +162,12 @@ function! DiffToggle()
 		silent diffthis
 	endif
 endfunction
+
+"Jenkinsfile
+au BufNewFile,BufRead Jenkinsfile setf groovy
+
+"Docker Tools
+let g:dockertools_term_closeonexit = 0
+
+"rhubarb.vim
+let g:github_enterprise_urls = ['https://github.dowjones.net']
