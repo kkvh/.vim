@@ -97,6 +97,7 @@ nnoremap <silent> <F12> :BufExplorer<CR>
 "Tagbar 
 nnoremap <silent> <F6> :TagbarToggle<CR>
 let g:tagbar_left=1
+let g:tagbar_ctags_bin='/opt/homebrew/bin/ctags'
 
 " better key bindings for UltiSnipsExpandTrigger
 let g:UltiSnipsExpandTrigger = "<tab>"
