@@ -35,6 +35,7 @@ Plug 'mustache/vim-mustache-handlebars'
 Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 Plug 'ryanoasis/vim-devicons'
 Plug 'tpope/vim-rhubarb'
+Plug 'github/copilot.vim'
 
 call plug#end()
 
