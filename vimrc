@@ -171,3 +171,6 @@ let g:dockertools_term_closeonexit = 0
 
 "rhubarb.vim
 let g:github_enterprise_urls = ['https://github.dowjones.net']
+
+"coc.nvim
+let g:coc_global_extensions = ['coc-ultisnips', 'coc-tsserver']
