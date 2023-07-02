@@ -22,20 +22,20 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
-Plug 'Quramy/vim-js-pretty-template', { 'for': [ 'javascript','typescript' ] }
-Plug 'Quramy/tsuquyomi', { 'for': 'typescript' }
+" Plug 'Quramy/vim-js-pretty-template', { 'for': [ 'javascript','typescript' ] }
+" Plug 'Quramy/tsuquyomi', { 'for': 'typescript' }
 Plug 'kkvh/vim-docker-tools'
 Plug 'tpope/vim-scriptease'
 Plug 'wesQ3/vim-windowswap'
 Plug 'pangloss/vim-javascript', { 'for': ['javascript','javascript.jsx','typescript','vue' ] }
 Plug 'mxw/vim-jsx', { 'for': [ 'javascript','javascript.jsx' ] }
-Plug 'mattn/emmet-vim', { 'for': ['javascript','javascript.jsx'] }
+" Plug 'mattn/emmet-vim', { 'for': ['javascript','javascript.jsx'] }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 Plug 'ryanoasis/vim-devicons'
 Plug 'tpope/vim-rhubarb'
-Plug 'github/copilot.vim'
+" Plug 'github/copilot.vim'
 
 call plug#end()
 
@@ -140,7 +140,7 @@ au BufWritePost *.go :silent GoBuild
 au FileType go nnoremap <F7> :GoSameIdsToggle<CR>
 
 "Js pretty template
-au FileType javascript JsPreTmpl
+" au FileType javascript JsPreTmpl
 
 "Vue Development
 command! VueAlternate :call VueAlternate()
