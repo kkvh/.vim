@@ -36,6 +36,7 @@ Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 Plug 'ryanoasis/vim-devicons'
 Plug 'tpope/vim-rhubarb'
 " Plug 'github/copilot.vim'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 call plug#end()
 
