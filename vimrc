@@ -27,7 +27,7 @@ Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
 Plug 'kkvh/vim-docker-tools'
 Plug 'tpope/vim-scriptease'
 Plug 'wesQ3/vim-windowswap'
-Plug 'pangloss/vim-javascript', { 'for': ['javascript','javascript.jsx','typescript','vue' ] }
+Plug 'pangloss/vim-javascript', { 'for': ['javascript','javascript.jsx','typescript','vue', 'svelte' ] }
 Plug 'mxw/vim-jsx', { 'for': [ 'javascript','javascript.jsx' ] }
 " Plug 'mattn/emmet-vim', { 'for': ['javascript','javascript.jsx'] }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -176,3 +176,10 @@ let g:github_enterprise_urls = ['https://github.dowjones.net']
 
 "coc.nvim
 let g:coc_global_extensions = ['coc-ultisnips', 'coc-tsserver']
+nmap <silent> gd :call CocAction('jumpDefinition', 'split')<CR>
+nmap <silent> gy :call CocAction('jumpTypeDefinition', 'split')<CR>
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+"Svelte
+au FileType svelte set syntax=html
