@@ -37,6 +37,8 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'tpope/vim-rhubarb'
 " Plug 'github/copilot.vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 call plug#end()
 
